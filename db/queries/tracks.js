@@ -1,6 +1,6 @@
 import db from "../client.js";
 
-export async function createTracks({ name, duration_ms }) {
+export async function createTracks({name, duration_ms}) {
   try {
     const sql = `
       INSERT INTO tracks(name, duration_ms)
