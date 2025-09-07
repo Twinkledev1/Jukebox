@@ -13,4 +13,3 @@ app.get("/", (req, res) => {
 
 app.use("/tracks", trackRouter);
 app.use("/playlists", playlistRouter);
-// app.use("/playlistTracks", playlistTracksRouter);
