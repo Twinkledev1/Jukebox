@@ -2,7 +2,7 @@ import express from "express";
 import { getPlaylist } from "../db/queries/playlist.js";
 import{createPlaylists} from "../db/queries/playlist.js";
 import { getPlaylistById } from "../db/queries/playlist.js";
-import {getPlaylistByTrackId} from "../db/queries/playlist.js";
+import {getTracksByPlaylistId} from "../db/queries/playlist.js";
 
 const playlistRouter = express.Router();
 export default playlistRouter;
@@ -33,7 +33,7 @@ res.send(playlist);
         const playlist = await getPlaylistById(id);
       res.send(playlist);
     } catch (err) {
-      console.error("Error fetching playlists:", err);
+      console.error("Error fetching playlists by id:", err);
     }
   });
 
@@ -41,10 +41,10 @@ res.send(playlist);
   playlistRouter.get("/:id/tracks", async (req, res) => {
     try {
         const {id} = req.params;
-        const playlist_track_id = await getPlaylistByTrackId(id);
+        const playlist_track_id = await getTracksByPlaylistId(id);
       res.send(playlist_track_id);
     } catch (err) {
-      console.error("Error fetching playlists:", err);
+      console.error("Error fetching playlists by tracks id:", err);
     }
   });
 
