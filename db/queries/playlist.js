@@ -59,18 +59,4 @@ export async function getTracksByPlaylistId(playlistId) {
   }
 }
 
-export async function createTracksByPlaylistId(name, description) {
-  try {
-    const sql = `
-      insert into playlists(name, description)
-      values($1,$2)
-      returning * `;
-    const values = [name, description];
 
-    const res = await db.query(sql, values);
-    return res.rows[0];
-  } catch (error) {
-    console.error("Error creating playlists", error);
-    throw error;
-  }
-}
